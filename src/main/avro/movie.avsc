@@ -1,0 +1,46 @@
+{
+  "type": "record",
+  "name": "PersonUpdated",
+  "namespace": "ch.abraxas.steuern.polaris.personenregister.api.event",
+  "fields": [
+    //    {
+    //      "name": "geschlecht",
+    //      "type": "ch.abraxas.steuern.polaris.personenregister.api.event.geschlecht"
+    //      "type": "geschlecht"
+    //    },
+    {
+      "name": "awaitingPartner",
+      "type": "boolean"
+    },
+    {
+      "name": "partner",
+      "default": null,
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "NatuerlichePerson",
+          "fields": [
+            {
+              "name": "geschlecht",
+              "type": {
+                "type": "enum",
+                "name": "Geschlecht",
+                "namespace": "ch.abraxas.steuern.polaris.personenregister.api.event",
+                "symbols": [
+                  "MAENNLICH",
+                  "WEIBLICH",
+                  "UNBESTIMMT"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "person",
+      "type": "NatuerlichePerson"
+    }
+  ]
+}
